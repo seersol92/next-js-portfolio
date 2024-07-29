@@ -1,6 +1,6 @@
 export default function page() {
     return (
-      <div>Work</div>
+      <main>Work</main>
     )
   }
   

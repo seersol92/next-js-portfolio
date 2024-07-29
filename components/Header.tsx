@@ -1,10 +1,11 @@
 import Link from "next/link";
 import Nav from "./Nav";
 import { Button } from "./ui/button";
+import MobileNav from "./MobileNav";
 
 export default function Header() {
   return (
-    <header className="text-white py-6 bg-gray-50/50 ">
+    <header className="text-white py-6 ">
         <div className="container mx-auto flex justify-between item-center">
             <Link href={"/"}>
                 <h1 className="text-4xl font-semibold">
@@ -16,13 +17,13 @@ export default function Header() {
             <div className="hidden md:flex gap-8 items-center">
                 <Nav />
                 <Link href={"/"}>
-                    <Button className="bg-accent hover:bg-accent-hover">Hire Me</Button>
+                    <Button>Hire Me</Button>
                 </Link>
             </div>
 
             {/* Mobile Nav */}
             <div className="md:hidden">
-                Mobile Nav
+               <MobileNav />
             </div>
         </div>
     </header>

@@ -24,6 +24,8 @@ const links = [
     path: "/about",
   },
 ];
+
+
 export default function Nav() {
   const pathName = usePathname();
   return (

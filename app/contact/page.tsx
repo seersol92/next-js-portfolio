@@ -1,5 +1,5 @@
 export default function page() {
   return (
-    <div>Contact us</div>
+    <main>Contact us</main>
   )
 }
