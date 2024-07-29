@@ -18,7 +18,7 @@ const PageTransition: React.FC<PageTransitionProps> = ({ children }) => {
                 initial={{ opacity: 0}} // Initial state
                 animate={{
                     opacity: 1,
-                    transition: {delay: 1, duration: 0.4, ease: 'easeInOut'}
+                    transition: {delay: 1.2, duration: 0.4, ease: 'easeInOut'}
                 }} 
                 className='h-screen w-screen  bg-primary top-0 pointer-events-none'  
             >
