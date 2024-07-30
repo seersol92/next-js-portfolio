@@ -11,12 +11,12 @@ const statsList = [
     count: 30,
   },
   {
-    title: "Technologies mastered",
+    title: "Tech mastered",
     count: 10,
   },
   {
     title: "Code commits",
-    count: 3000,
+    count: 999,
   },
 ];
 
