@@ -1,11 +1,18 @@
 {
   "extends": "next/core-web-vitals",
   "rules": {
-    "react/no-unescaped-entities": "off", // Correct rule for unescaped entities
-    "@typescript-eslint/quotes": ["off"], // Correct rule name and configuration
-    "quotes": ["off"], // This is not typically how you configure rules; use @typescript-eslint/quotes for TypeScript
-    "no-useless-escape": "off", // This is correctly formatted
+    "react/no-unecaped-entities": "off",
+    "@typescript-eslint-quotes": "off",
+    "quotes": [0],
     "avoidEscape": 0,
     "allowTempleteLiterals": 0,
+    "no-useless-escape": 0 
+  },
+  "settings": {
+    "import/resolver": {
+      "alias": [
+        ["@", "./"]
+      ]
+    }
   }
 }
