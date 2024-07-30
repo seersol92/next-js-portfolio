@@ -20,7 +20,7 @@ const PageTransition: React.FC<PageTransitionProps> = ({ children }) => {
                     opacity: 1,
                     transition: {delay: 1, duration: 0.4, ease: 'easeInOut'}
                 }} 
-                className='h-screen w-screen  bg-primary top-0 '  
+                className='h-screen   bg-primary top-0 '  
             >
                 {children}
             </motion.div>

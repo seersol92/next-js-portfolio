@@ -1,15 +1,16 @@
-import Link from "next/link";
-import { Button } from "@/components/ui/button";
+import { motion } from 'framer-motion';
 import { FiDownload } from "react-icons/fi";
 import Socials from "@/components/Socials";
 import Photo from "@/components/Photo";
+import { Button } from "@/components/ui/button";
+import Stats from '@/components/Stats';
 
 export default function Home() {
   return (
     <section className="container h-full mx-auto">
-      <div className="flex flex-col md:flex-row justify-between items-center md:pt-12 pt-2">
+      <div className="flex flex-col xl:flex-row justify-between items-center xl:pt-12 pt-2">
         {/*Intro text*/}
-        <div className=" order-2 md:order-none text-center md:text-left">
+        <div className=" order-2 xl:order-none text-center xl:text-left">
           <span className="text-xl">🚀 Software Developer 🚀</span>
           <h1 className="h1 mb-5">
             Hello i'm <br />
@@ -25,15 +26,15 @@ export default function Home() {
           </p>
 
           {/* Download Cv and social links */}
-          <div className="flex flex-col md:flex-row gap-6 items-center">
-              <Button
-                variant="outline"
-                size="lg"
-                className="flex uppercase justify-center   items-center gap-3"
-              >
-                <span>Download CV</span>
-                <FiDownload />
-              </Button>
+          <div className="flex flex-col xl:flex-row gap-6 items-center">
+            <Button
+              variant="outline"
+              size="lg"
+              className="flex uppercase justify-center   items-center gap-3"
+            >
+              <span>Download CV</span>
+              <FiDownload />
+            </Button>
 
             <div className="mb-8 xl:mb-0">
               <Socials
@@ -45,10 +46,14 @@ export default function Home() {
         </div>
 
         {/*Picture*/}
-        <div className="order-1 md:order-none mb-8 md:mb-0">
+        <div className="order-1 xl:order-none mb-8 xl:mb-0">
           <Photo />
         </div>
       </div>
+
+      <div className='mt-10'>
+          <Stats/>
+        </div>
     </section>
   );
 }
