@@ -1,9 +1,9 @@
 import { motion } from 'framer-motion';
 import { FiDownload } from "react-icons/fi";
-import Socials from "@/components/Socials";
 import Photo from "@/components/Photo";
 import { Button } from "@/components/ui/button";
 import Stats from '@/components/Stats';
+import MySocials from '@/components/MySocials';
 
 export default function Home() {
   return (
@@ -37,7 +37,7 @@ export default function Home() {
             </Button>
 
             <div className="mb-8 xl:mb-0">
-              <Socials
+              <MySocials
                 containerStyles="flex gap-6 items-center"
                 iconStyles="w-9 h-9 border border-accent hover:transition-all duration-1000 fu rounded-full flex justify-center items-center text-base text-accent hover:text-primary hover:bg-accent"
               />
