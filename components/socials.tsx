@@ -14,7 +14,7 @@ interface socialProps {
 }
 
 
-const socials: React.FC<socialProps> = ({containerStyles, iconStyles}) => {
+const Socials: React.FC<socialProps> = ({containerStyles, iconStyles}) => {
   return (
     <div className={containerStyles}>
         {  socialLinks.map((social, index) => {
@@ -26,4 +26,4 @@ const socials: React.FC<socialProps> = ({containerStyles, iconStyles}) => {
   )
 }
 
-export default socials;
+export default Socials;
