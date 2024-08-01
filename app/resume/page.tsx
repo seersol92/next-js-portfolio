@@ -5,7 +5,7 @@ import {
   TooltipProvider,
   TooltipContent,
 } from "@/components/ui/tooltip";
-import './custom.css';
+import "./custom.css";
 
 const about = {
   title: "About me",
@@ -73,19 +73,19 @@ const education = {
     "Lorem, ipsum dolor sit amet consectetur adipisicing elit. Laborum eaque deleniti ipsa, expedita quos molestias.",
   info: [
     {
-      compnay: "Codeacdemy",
+      institute: "Codeacdemy",
       degree: "Full Stack Developer Bootcamp",
       duration: "2020",
     },
 
     {
-      compnay: "Tech Institute",
-      position: "Web Development Certification",
+      institute: "Tech Institute",
+      degree: "Web Development Certification",
       duration: "2016 - 2017",
     },
     {
-      compnay: "University Of Sargodha",
-      position: "Bachelor in Computer Science (BCS)",
+      institute: "University Of Sargodha",
+      degree: "Bachelor in Computer Science (BCS)",
       duration: "2012 - 2016",
     },
   ],
@@ -137,20 +137,66 @@ export default function page() {
       <div className="container mx-auto">
         <Tabs
           defaultValue="experience"
-          className="flex flex-col xl:flex-row gap-[60px]"
+          className="flex flex-col lg:flex-row gap-[60px]"
         >
-          <TabsList className="flex flex-col gap-6 w-full xl:w-[300px] mx-auth xl:mx-0">
+          <TabsList className="flex flex-col gap-6 w-full lg:w-[300px] mx-auth lg:mx-0">
             <TabsTrigger value="experience">Experience</TabsTrigger>
             <TabsTrigger value="education">Education</TabsTrigger>
             <TabsTrigger value="skills">Skills</TabsTrigger>
             <TabsTrigger value="about">About</TabsTrigger>
           </TabsList>
-          <div className="w-full">
-            <TabsContent value="experience">My Experience</TabsContent>
-            <TabsContent value="education">My Education</TabsContent>
-            <TabsContent value="skills">My Skills</TabsContent>
-            <TabsContent value="about">My About</TabsContent>
-          </div>
+          <TabsContent value="experience" className="w-full">
+            <div className="flex flex-col gap-[30px] text-center lg:text-start">
+              <h2 className="h2 capitalize">{experience.title}</h2>
+              <p className="max-w-[600px] text-white/50 mx-auto xl:mx-0">
+                {experience.description}
+              </p>
+              <ul className="grid grid-cols-1 lg:grid-cols-2 gap-5">
+                {experience.info.map((item, index) => {
+                  return (
+                    <li
+                      key={index}
+                      className="flex flex-col justify-center items-center gap-4 px-10 py-6 bg-black/50 rounded-xl lg:items-start hover:cursor-pointer"
+                    >
+                      <p className="text-accent">{item.duration}</p>
+                      <h2>{item.position}</h2>
+                      <div className="flex items-center  justify-center gap-3">
+                        <span className="w-[6px] h-[6px] rounded-full bg-accent"></span>
+                        <p className="text-white/50"> {item.compnay} </p>
+                      </div>
+                    </li>
+                  );
+                })}
+              </ul>
+            </div>
+          </TabsContent>
+          <TabsContent value="education" className="w-full">
+            <div className="flex flex-col gap-[30px] text-center lg:text-start">
+              <h2 className="h2">{education.title}</h2>
+              <p className="max-w-[600px] text-white/50 mx-auto xl:mx-0">
+                {education.description}
+              </p>
+              <ul className="grid grid-cols-1 lg:grid-cols-2 gap-5">
+                {education.info.map((item, index) => {
+                  return (
+                    <li
+                      key={index}
+                      className="flex flex-col justify-center items-center gap-4 px-10 py-6 bg-black/50 rounded-xl lg:items-start hover:cursor-pointer"
+                    >
+                      <p className="text-accent">{item.duration}</p>
+                      <h2>{item.degree}</h2>
+                      <div className="flex items-center  justify-center gap-3">
+                        <span className="w-[6px] h-[6px] rounded-full bg-accent"></span>
+                        <p className="text-white/50"> {item.institute} </p>
+                      </div>
+                    </li>
+                  );
+                })}
+              </ul>
+            </div>
+          </TabsContent>
+          <TabsContent value="skills">My Skills</TabsContent>
+          <TabsContent value="about">My About</TabsContent>
         </Tabs>
       </div>
     </section>
