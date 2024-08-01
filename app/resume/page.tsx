@@ -6,6 +6,8 @@ import {
   TooltipContent,
 } from "@/components/ui/tooltip";
 import "./custom.css";
+import Image from "next/image";
+import { title } from "process";
 
 const about = {
   title: "About me",
@@ -91,42 +93,104 @@ const education = {
   ],
 };
 
-const skills = {
+const skillsList = {
   title: "My Skills",
   description:
     "Lorem ipsum dolor sit amet consectetur adipisicing elit. Alias aliquid at amet laboriosam, eaque repellendus.",
-  list: [
+  groups: [
     {
-      icon: "",
-      name: "",
+      title: "FrontEnd",
+      skills: [
+        {
+          title: "HTML5",
+          icon: "https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/html5/html5-original-wordmark.svg",
+        },
+        {
+          title: "CSS3",
+          icon: "https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/css3/css3-original-wordmark.svg",
+        },
+        {
+          title: "Tailwind Css",
+          icon: "https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/tailwindcss/tailwindcss-original-wordmark.svg",
+        },
+        {
+          title: "React.js",
+          icon: "https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/react/react-original-wordmark.svg",
+        },
+        {
+          title: "Next.js",
+          icon: "https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/nextjs/nextjs-original.svg",
+        },
+      ],
     },
     {
-      icon: "",
-      name: "",
+      title: "BackEnd",
+      skills: [
+        {
+          title: "PHP",
+          icon: "https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/php/php-original.svg",
+        },
+        {
+          title: "Laravel",
+          icon: "https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/laravel/laravel-original-wordmark.svg",
+        },
+        {
+          title: "Express.js",
+          icon: "https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/express/express-original.svg",
+        },
+        {
+          title: "Django",
+          icon: "https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/django/django-plain-wordmark.svg",
+        },
+      ],
     },
     {
-      icon: "",
-      name: "",
+      title: "Databases",
+      skills: [
+        {
+          title: "Mysql",
+          icon: "https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/mysql/mysql-original-wordmark.svg",
+        },
+        {
+          title: "PostgreSql",
+          icon: "https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/postgresql/postgresql-plain-wordmark.svg",
+        },
+        {
+          title: "MongoDB",
+          icon: "https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/mongodb/mongodb-plain-wordmark.svg",
+        },
+        {
+          title: "Firebase",
+          icon: "https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/firebase/firebase-original-wordmark.svg",
+        }
+      ],
     },
     {
-      icon: "",
-      name: "",
+      title: "Mobile App Development",
+      skills: [
+        {
+          title: "React Native",
+          icon: "https://reactnative.dev/img/header_logo.svg",
+        }
+      ]
     },
+
     {
-      icon: "",
-      name: "",
-    },
-    {
-      icon: "",
-      name: "",
-    },
-    {
-      icon: "",
-      name: "",
-    },
-    {
-      icon: "",
-      name: "",
+      title: "Tools",
+      skills: [
+        {
+          title: "GitHub",
+          icon: "https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/github/github-original-wordmark.svg",
+        },
+        {
+          title: "Docker",
+          icon: "https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/docker/docker-plain-wordmark.svg",
+        },
+        {
+          title: "k8s",
+          icon: "https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/kubernetes/kubernetes-plain-wordmark.svg",
+        },
+      ]
     },
   ],
 };
@@ -139,7 +203,7 @@ export default function page() {
           defaultValue="experience"
           className="flex flex-col lg:flex-row gap-[60px]"
         >
-          <TabsList className="flex flex-col gap-6 w-full lg:w-[300px] mx-auth lg:mx-0">
+          <TabsList className="flex flex-col gap-6 w-full md:w-[300px] mx-auth lg:mx-0">
             <TabsTrigger value="experience">Experience</TabsTrigger>
             <TabsTrigger value="education">Education</TabsTrigger>
             <TabsTrigger value="skills">Skills</TabsTrigger>
@@ -170,6 +234,7 @@ export default function page() {
               </ul>
             </div>
           </TabsContent>
+
           <TabsContent value="education" className="w-full">
             <div className="flex flex-col gap-[30px] text-center lg:text-start">
               <h2 className="h2">{education.title}</h2>
@@ -195,8 +260,55 @@ export default function page() {
               </ul>
             </div>
           </TabsContent>
-          <TabsContent value="skills">My Skills</TabsContent>
-          <TabsContent value="about">My About</TabsContent>
+
+          <TabsContent value="skills" className="w-full">
+            <div className="flex flex-col gap-[30px] text-center lg:text-start">
+              <h2 className="h2">{skillsList.title}</h2>
+              <p className="max-w-[600px] text-white/50 mx-auto xl:mx-0">
+                {skillsList.description}
+              </p>
+              {skillsList.groups.map((group, index) => {
+                return (
+                  <div key={index}>
+                    <h3 className="h3 capitalize flex justify-start">
+                      {group.title}
+                    </h3>
+                    <span className="block border-b border-white/60 mt-4"></span>
+                    <ul
+                      key={index}
+                      className="grid grid-cols-2 lg:grid-cols-5 gap-4 py-6"
+                    >
+                      {group.skills.map((skill, index) => {
+                        return (
+                          <li
+                            key={index}
+                            className="flex flex-col justify-center items-center gap-4 hover:cursor-pointer"
+                          >
+                            <Image
+                              src={skill.icon}
+                              width={90}
+                              height={90}
+                              alt={skill.title}
+                              title={skill.title}
+                            />
+                          </li>
+                        );
+                      })}
+                    </ul>
+                  </div>
+                );
+              })}
+            </div>
+          </TabsContent>
+
+          <TabsContent value="about" className="w-full">
+            <div className="flex flex-col gap-[30px] text-center lg:text-start">
+              <h2 className="h2">{about.title}</h2>
+              <p className="max-w-[600px] text-white/50 mx-auto xl:mx-0">
+                {about.description}
+              </p>
+            </div>
+          </TabsContent>
         </Tabs>
       </div>
     </section>
