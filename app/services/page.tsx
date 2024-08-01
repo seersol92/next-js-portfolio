@@ -38,9 +38,9 @@ export default function page() {
                     {service.id}
                   </div>
 
-                  <Link href={''} className="w-[60px] h-[60px] rounded-full flex justify-center items-center hover:bg-accent transition-all duration-500
+                  <Link href={''} className="w-[60px] bg-white h-[60px] rounded-full flex justify-center items-center hover:bg-accent transition-all duration-500
                    hover:-rotate-45 "> 
-                    <FiArrowDownRight />
+                    <FiArrowDownRight className="text-primary text-3xl"/>
                   </Link>
                 </div>
 

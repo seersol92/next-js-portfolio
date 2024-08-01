@@ -20,6 +20,10 @@
         @apply text-[20px] md:text-[24px] leading-[1.1] font-semibold
     }
 
+    .tab-trigger[data-state="active"] {
+        @apply bg-accent text-primary font-bold shadow-sm;
+      }
+
     .text-outline {
         -webkit-text-stroke: 1px #ffffff;
     }
