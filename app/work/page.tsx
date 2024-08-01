@@ -13,9 +13,8 @@ import { Navigation } from "swiper/modules";
 import "swiper/css"; // Import Swiper styles
 import "swiper/css/navigation"; // Import Swiper navigation styles
 import Image from "next/image";
-import { Swiper as SwiperCore } from 'swiper';
+import {  Swiper as SwiperType } from 'swiper';
 
-// Project data
 const projects = [
   {
     id: "01",
@@ -131,13 +130,13 @@ const projects = [
 
 export default function Page() {
   const [project, setProject] = useState(projects[0]);
-  const [swiper, setSwiper] = useState<SwiperCore | null>(null);
+  const [swiper, setSwiper] = useState<SwiperType | null>(null);
 
-  const handleChangeSlide = (swiperInstance: SwiperCore) => {
-    setProject(projects[swiperInstance.activeIndex]);
-    if (swiperInstance) {
-      const isBeginning = swiperInstance.isBeginning;
-      const isEnd = swiperInstance.isEnd;
+  const handleChangeSlide = (swiper: any) => {
+    setProject(projects[swiper.activeIndex]);
+    if (swiper) {
+      const isBeginning = swiper.isBeginning;
+      const isEnd = swiper.isEnd;
       setDisableButtons({
         prev: isBeginning,
         next: isEnd,
@@ -185,7 +184,7 @@ export default function Page() {
 
           <div className="flex gap-5">
             <Link
-              href={project.live}
+              href="#"
               title="Live Project"
               className="flex justify-center items-center bg-white/5 rounded-full w-[68px] h-[68px]"
             >
@@ -193,7 +192,7 @@ export default function Page() {
             </Link>
 
             <Link
-              href={project.github}
+              href="#"
               title="Github repository"
               className="flex justify-center items-center bg-white/5 rounded-full w-[68px] h-[68px]"
             >
@@ -207,7 +206,7 @@ export default function Page() {
             spaceBetween={30}
             slidesPerView={1}
             modules={[Navigation]}
-            onSlideChange={({swiper}) => handleChangeSlide(swiper)}
+            onSlideChange={handleChangeSlide}
             className="h-[520px] mb-12"
             navigation={{
               nextEl: ".swiper-button-next",
@@ -223,7 +222,7 @@ export default function Page() {
                 <Image
                   src={project.image}
                   fill
-                  alt={project.title}
+                  alt=""
                   className=" object-cover"
                 />{" "}
                 {/* Replace with actual image or content */}
