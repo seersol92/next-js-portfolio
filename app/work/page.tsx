@@ -9,7 +9,7 @@ import {
   FiGithub,
 } from "react-icons/fi";
 import { Swiper, SwiperSlide } from "swiper/react";
-import { Navigation, Swiper as SwiperType } from "swiper/modules";
+import { Navigation } from "swiper/modules";
 import "swiper/css"; // Import Swiper styles
 import "swiper/css/navigation"; // Import Swiper navigation styles
 import Image from "next/image";
@@ -129,7 +129,7 @@ const projects = [
 
 export default function Page() {
   const [project, setProject] = useState(projects[0]);
-  const [swiper, setSwiper] = useState<SwiperType | null>(null);
+  const [swiper, setSwiper] = useState(null);
 
   const handleChangeSlide = (swiper: any) => {
     setProject(projects[swiper.activeIndex]);
