@@ -3,31 +3,48 @@ import { FiArrowDownRight } from "react-icons/fi";
 
 const serviceList = [
   {
-    "id": "01",
-    "title": "Frontend Development",
-    "description": "Lorem ipsum dolor sit amet consectetur adipisicing elit. Nemo a exercitationem, excepturi vero eius aut."
+    id: "01",
+    title: "Frontend Development",
+    description:
+      "Expert in building responsive and interactive user interfaces with modern frameworks and libraries like React.js, Next.js, and Tailwind CSS. Ensuring a seamless user experience with optimized performance.",
   },
   {
-    "id": "02",
-    "title": "Backend Development",
-    "description": "Lorem ipsum dolor sit amet consectetur adipisicing elit. Nemo a exercitationem, excepturi vero eius aut."
+    id: "02",
+    title: "Backend Development",
+    description:
+      "Skilled in creating robust server-side applications and APIs using technologies like Node.js, Express.js, and Laravel. Focused on scalability, security, and efficient data handling.",
   },
   {
-    "id": "03",
-    "title": "Databases",
-    "description": "Lorem ipsum dolor sit amet consectetur adipisicing elit. Nemo a exercitationem, excepturi vero eius aut."
+    id: "03",
+    title: "Database Management",
+    description:
+      "Proficient in designing and managing databases using MySQL, PostgreSQL, MongoDB, and Firebase. Ensuring data integrity, efficient queries, and scalable database solutions.",
   },
   {
-    "id": "04",
-    "title": "Devops",
-    "description": "Lorem ipsum dolor sit amet consectetur adipisicing elit. Nemo a exercitationem, excepturi vero eius aut."
+    id: "04",
+    title: "DevOps",
+    description:
+      "Experienced in implementing CI/CD pipelines, containerization with Docker, and orchestration with Kubernetes. Ensuring smooth deployment processes and system reliability.",
+  },
+  {
+    id: "05",
+    title: "Mobile App Development",
+    description:
+      "Creating cross-platform mobile applications with React Native. Leveraging modern mobile development practices to deliver high-performance and user-friendly apps.",
+  },
+  {
+    id: "06",
+    title: "API Integration",
+    description:
+      "Integrating third-party APIs and services into web and mobile applications to extend functionality and enhance user experience. Skilled in handling various API protocols and authentication methods.",
   },
 ];
 
 
+
 export default function page() {
     return (
-      <section className="container mx-auto min-h-[90vh] flex flex-col justify-center py-12 xl:py-0">
+      <section className="container mx-auto min-h-[90vh] mt-20 flex flex-col justify-center py-12 xl:py-0">
         <div className=" grid grid-cols-2  gap-[60px]">
           {
             serviceList.map((service, index) => {
@@ -48,7 +65,7 @@ export default function page() {
 
                 <p className=" text-white/50">{service.description}</p>
 
-                <div className="border-b-1 border-white/60 w-full"></div>
+                <div className=" block border-b-2 border-white/60 w-full"></div>
               </div>
             } )
           }

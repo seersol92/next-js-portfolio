@@ -4,9 +4,9 @@ import Link from "next/link";
 import { CiMail, CiPhone } from "react-icons/ci";
 
 const about = {
-  title: "About me",
+  title: "About Me",
   description:
-    "Lorem ipsum dolor, sit amet consectetur adipisicing elit. Dolores explicabo eaque atque quae, repellat mollitia.",
+    "I am a dedicated and experienced Full Stack Developer with over 8 years of expertise in building modern web and mobile applications. My passion lies in creating user-centric solutions and leveraging the latest technologies to deliver high-quality results.",
   info: [
     {
       fieldName: "Name",
@@ -14,25 +14,38 @@ const about = {
     },
     {
       fieldName: "Phone",
-      fieldValue: <Link href="tel:+923067051251" className="flex gap-2 justify-center items-center underline text-accent hover:accent-hover">
-      <CiPhone/> +92 306 705 1251 
-     </Link>,
+      fieldValue: (
+        <Link
+          href="tel:+923067051251"
+          className="flex gap-2 justify-center items-center underline text-accent hover:text-accent-hover"
+        >
+          <CiPhone /> +92 306 705 1251
+        </Link>
+      ),
     },
     {
-      fieldName: "Experince",
+      fieldName: "Experience",
       fieldValue: "8+ Years",
     },
     {
       fieldName: "Email",
-      fieldValue: <Link href="mailto:hamad.seersol@gmail.com" className="flex gap-2 justify-center items-center underline text-accent hover:accent-hover">
-         <CiMail/> hamad.seersol@gmail.com 
-        </Link>,
+      fieldValue: (
+        <Link
+          href="mailto:hamad.seersol@gmail.com"
+          className="flex gap-2 justify-center items-center underline text-accent hover:text-accent-hover"
+        >
+          <CiMail /> hamad.seersol@gmail.com
+        </Link>
+      ),
     },
     {
       fieldName: "Freelance",
-      fieldValue: <div className="flex">
-        Available<span className="block w-[6px] h-[6px] rounded-full bg-accent"></span>
-      </div>,
+      fieldValue: (
+        <div className="flex">
+          Available
+          <span className="block w-[6px] h-[6px] rounded-full bg-accent"></span>
+        </div>
+      ),
     },
     {
       fieldName: "Language",
@@ -42,28 +55,28 @@ const about = {
 };
 
 const experience = {
-  title: "My experince",
+  title: "My Experience",
   description:
-    "Lorem, ipsum dolor sit amet consectetur adipisicing elit. Laborum eaque deleniti ipsa, expedita quos molestias.",
+    "Over the years, I have accumulated valuable experience working in various roles and projects, honing my skills in full stack development, web technologies, and team collaboration.",
   info: [
     {
-      compnay: "Seersol Inc.",
+      company: "Seersol Inc.",
       position: "Full Stack Developer",
       duration: "2024 - Present",
     },
     {
-      compnay: "INF.se",
+      company: "INF.se",
       position: "Senior Laravel Developer",
       duration: "2020 - 2023",
     },
     {
-      compnay: "Pixiders",
+      company: "Pixiders",
       position: "Web Developer",
       duration: "2018 - 2020",
     },
     {
-      compnay: "Tech Acdemy",
-      position: "Teacing",
+      company: "Tech Academy",
+      position: "Teaching Assistant",
       duration: "2016 - 2017",
     },
   ],
@@ -72,21 +85,20 @@ const experience = {
 const education = {
   title: "My Education",
   description:
-    "Lorem, ipsum dolor sit amet consectetur adipisicing elit. Laborum eaque deleniti ipsa, expedita quos molestias.",
+    "I have pursued various educational programs to enhance my skills and knowledge in the field of web development and computer science.",
   info: [
     {
-      institute: "Codeacdemy",
+      institute: "Codeacademy",
       degree: "Full Stack Developer Bootcamp",
       duration: "2020",
     },
-
     {
       institute: "Tech Institute",
       degree: "Web Development Certification",
       duration: "2016 - 2017",
     },
     {
-      institute: "University Of Sargodha",
+      institute: "University of Sargodha",
       degree: "Bachelor in Computer Science (BCS)",
       duration: "2012 - 2016",
     },
@@ -96,7 +108,7 @@ const education = {
 const skillsList = {
   title: "My Skills",
   description:
-    "Lorem ipsum dolor sit amet consectetur adipisicing elit. Alias aliquid at amet laboriosam, eaque repellendus.",
+    "I am proficient in a wide range of technologies and tools, enabling me to handle both front-end and back-end development tasks efficiently.",
   groups: [
     {
       title: "FrontEnd",
@@ -110,7 +122,7 @@ const skillsList = {
           icon: "https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/css3/css3-original-wordmark.svg",
         },
         {
-          title: "Tailwind Css",
+          title: "Tailwind CSS",
           icon: "https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/tailwindcss/tailwindcss-original-wordmark.svg",
         },
         {
@@ -148,11 +160,11 @@ const skillsList = {
       title: "Databases",
       skills: [
         {
-          title: "Mysql",
+          title: "MySQL",
           icon: "https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/mysql/mysql-original-wordmark.svg",
         },
         {
-          title: "PostgreSql",
+          title: "PostgreSQL",
           icon: "https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/postgresql/postgresql-plain-wordmark.svg",
         },
         {
@@ -174,7 +186,6 @@ const skillsList = {
         },
       ],
     },
-
     {
       title: "Tools",
       skills: [
@@ -187,7 +198,7 @@ const skillsList = {
           icon: "https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/docker/docker-plain-wordmark.svg",
         },
         {
-          title: "k8s",
+          title: "Kubernetes",
           icon: "https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/kubernetes/kubernetes-plain-wordmark.svg",
         },
       ],
@@ -312,7 +323,7 @@ export default function page() {
                   return (
                     <li
                       key={index}
-                      className="flex  justify-center items-center lg:justify-start gap-4 px-10 py-6 bg-black/50 rounded-xl lg:items-start hover:cursor-pointer"
+                      className="flex  justify-center gap-4 px-10 py-6 bg-black/50 rounded-xl lg:items-start hover:cursor-pointer"
                     >
                       <span className="font-bold">{item.fieldName}: </span>
                       <span>{item.fieldValue}</span>
