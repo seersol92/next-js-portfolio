@@ -237,7 +237,7 @@ export default function page() {
                       <h2>{item.position}</h2>
                       <div className="flex items-center  justify-center gap-3">
                         <span className="w-[6px] h-[6px] rounded-full bg-accent"></span>
-                        <p className="text-white/50"> {item.compnay} </p>
+                        <p className="text-white/50"> {item.company} </p>
                       </div>
                     </li>
                   );
