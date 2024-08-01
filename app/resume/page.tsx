@@ -1,13 +1,7 @@
 import { Tabs, TabsTrigger, TabsContent, TabsList } from "@/components/ui/tabs";
-import {
-  Tooltip,
-  TooltipTrigger,
-  TooltipProvider,
-  TooltipContent,
-} from "@/components/ui/tooltip";
-import "./custom.css";
 import Image from "next/image";
-import { title } from "process";
+import Link from "next/link";
+import { CiMail, CiPhone } from "react-icons/ci";
 
 const about = {
   title: "About me",
@@ -20,19 +14,25 @@ const about = {
     },
     {
       fieldName: "Phone",
-      fieldValue: "+92 306 705 1251",
+      fieldValue: <Link href="tel:+923067051251" className="flex gap-2 justify-center items-center underline text-accent hover:accent-hover">
+      <CiPhone/> +92 306 705 1251 
+     </Link>,
     },
     {
       fieldName: "Experince",
       fieldValue: "8+ Years",
     },
     {
-      fieldName: "Eamil",
-      fieldValue: "hamad.seersol@gmail.com",
+      fieldName: "Email",
+      fieldValue: <Link href="mailto:hamad.seersol@gmail.com" className="flex gap-2 justify-center items-center underline text-accent hover:accent-hover">
+         <CiMail/> hamad.seersol@gmail.com 
+        </Link>,
     },
     {
       fieldName: "Freelance",
-      fieldValue: "Available",
+      fieldValue: <div className="flex">
+        Available<span className="block w-[6px] h-[6px] rounded-full bg-accent"></span>
+      </div>,
     },
     {
       fieldName: "Language",
@@ -162,7 +162,7 @@ const skillsList = {
         {
           title: "Firebase",
           icon: "https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/firebase/firebase-original-wordmark.svg",
-        }
+        },
       ],
     },
     {
@@ -171,8 +171,8 @@ const skillsList = {
         {
           title: "React Native",
           icon: "https://reactnative.dev/img/header_logo.svg",
-        }
-      ]
+        },
+      ],
     },
 
     {
@@ -190,7 +190,7 @@ const skillsList = {
           title: "k8s",
           icon: "https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/kubernetes/kubernetes-plain-wordmark.svg",
         },
-      ]
+      ],
     },
   ],
 };
@@ -307,6 +307,19 @@ export default function page() {
               <p className="max-w-[600px] text-white/50 mx-auto xl:mx-0">
                 {about.description}
               </p>
+              <ul className="grid grid-cols-1 lg:grid-cols-2 gap-4">
+                {about.info.map((item, index) => {
+                  return (
+                    <li
+                      key={index}
+                      className="flex  justify-center items-center lg:justify-start gap-4 px-10 py-6 bg-black/50 rounded-xl lg:items-start hover:cursor-pointer"
+                    >
+                      <span className="font-bold">{item.fieldName}: </span>
+                      <span>{item.fieldValue}</span>
+                    </li>
+                  );
+                })}
+              </ul>
             </div>
           </TabsContent>
         </Tabs>
