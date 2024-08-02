@@ -14,6 +14,7 @@ import {
   SelectValue,
 } from "@/components/ui/select";
 import { Textarea } from "@/components/ui/textarea";
+import { toast } from "react-toastify";
 
 // Define the validation schema using Yup
 // Define the validation schema using Yup with min lengths
@@ -42,6 +43,7 @@ export default function Page() {
   const {
     register,
     handleSubmit,
+    reset,
     formState: { errors },
   } = useForm({
     resolver: yupResolver(validationSchema),
@@ -51,12 +53,24 @@ export default function Page() {
   const onSubmit = async (data: contactForm) => {
     setIsLoading(true);
     try {
-      await new Promise((resolve) => setTimeout(resolve, 2000));
-      // Simulate form submission
-      console.log(data);
-      // Here you would typically send the data to your server
-    } catch (error) {
-      console.error("Error submitting form", error);
+      const response = await fetch("/api/send-email", {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json",
+        },
+        body: JSON.stringify(data),
+      });
+
+      if (response.ok) {
+        toast.success("Message sent successfully");
+        reset();
+      } else {
+        const result = await response.json();
+        toast.error(`Error: ${result.error}`);
+      }
+    } catch (err) {
+      console.error("Submission error:", err);
+      toast.error("Submission error");
     } finally {
       setIsLoading(false);
     }
