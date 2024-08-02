@@ -26,7 +26,7 @@ const validationSchema = Yup.object().shape({
     .email("Invalid email format")
     .required("Email is required"),
   phone: Yup.string().min(10, "Phone number too short"), // Assuming a minimum length of 10 digits
-  service: Yup.string().required("Please select a service"),
+  service: Yup.string(),
   message: Yup.string()
     .required("Message is required")
     .min(10, "Message must be at least 10 characters long"), // Minimum length for the message
@@ -48,6 +48,7 @@ export default function Page() {
   const onSubmit = async (data) => {
     setIsLoading(true);
     try {
+      await new Promise((resolve) => setTimeout(resolve, 2000));
       // Simulate form submission
       console.log(data);
       // Here you would typically send the data to your server
@@ -97,7 +98,7 @@ export default function Page() {
                 error={errors.phone ? errors.phone.message : undefined}
               />
             </div>
-            <Select {...register("service")}>
+            <Select>
               <SelectTrigger>
                 <SelectValue placeholder="Select a service" />
               </SelectTrigger>
