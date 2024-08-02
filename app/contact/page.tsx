@@ -32,6 +32,9 @@ const validationSchema = Yup.object().shape({
     .min(10, "Message must be at least 10 characters long"), // Minimum length for the message
 });
 
+// Extract TypeScript type from Yup schema
+type contactForm = Yup.InferType<typeof validationSchema>;
+
 export default function Page() {
   const [isLoading, setIsLoading] = useState(false);
 
@@ -45,7 +48,7 @@ export default function Page() {
   });
 
   // Form submit handler
-  const onSubmit = async (data) => {
+  const onSubmit = async (data: contactForm) => {
     setIsLoading(true);
     try {
       await new Promise((resolve) => setTimeout(resolve, 2000));
