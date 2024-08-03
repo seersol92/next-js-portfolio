@@ -40,37 +40,41 @@ const serviceList = [
   },
 ];
 
-
-
 export default function page() {
-    return (
-      <section className="container mx-auto min-h-[90vh] mt-20 flex flex-col justify-center py-12 xl:py-0">
-        <div className=" grid grid-cols-2  gap-[60px]">
-          {
-            serviceList.map((service, index) => {
-              return <div className="flex-1 flex flex-col justify-center gap-6 group hover:cursor-pointer" key={index}>
-                <div className=" flex justify-between items-center w-full">
-
-                  <div className="text-5xl font-extrabold text-transparent text-outline group-hover:text-outline-hover">
-                    {service.id}
-                  </div>
-
-                  <Link href={''} className="w-[60px] bg-white h-[60px] rounded-full flex justify-center items-center hover:bg-accent transition-all duration-500
-                   hover:-rotate-45 "> 
-                    <FiArrowDownRight className="text-primary text-3xl"/>
-                  </Link>
+  return (
+    <section className="container mx-auto min-h-[90vh] mt-20 flex flex-col justify-center py-12 xl:py-0">
+      <div className=" grid grid-cols-1 lg:grid-cols-2  gap-[60px]">
+        {serviceList.map((service, index) => {
+          return (
+            <div
+              className="flex-1 flex flex-col justify-center gap-6 group hover:cursor-pointer"
+              key={index}
+            >
+              <div className=" flex justify-between items-center w-full">
+                <div className="text-5xl font-extrabold text-transparent text-outline group-hover:text-outline-hover">
+                  {service.id}
                 </div>
 
-                <h2 className=" text-[30px] leading-none font-bold group-hover:text-accent transition-all duration-500 ">{service.title}</h2>
-
-                <p className=" text-white/50">{service.description}</p>
-
-                <div className=" block border-b-2 border-white/60 w-full"></div>
+                <Link
+                  href={""}
+                  className="w-[60px] bg-white h-[60px] rounded-full flex justify-center items-center hover:bg-accent transition-all duration-500
+                   hover:-rotate-45 "
+                >
+                  <FiArrowDownRight className="text-primary text-3xl" />
+                </Link>
               </div>
-            } )
-          }
-        </div>
-      </section>
-    )
-  }
-  
+
+              <h2 className=" text-[30px] leading-none font-bold group-hover:text-accent transition-all duration-500 ">
+                {service.title}
+              </h2>
+
+              <p className=" text-white/50">{service.description}</p>
+
+              <div className=" block border-b-2 border-white/60 w-full"></div>
+            </div>
+          );
+        })}
+      </div>
+    </section>
+  );
+}

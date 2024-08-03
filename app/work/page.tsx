@@ -13,7 +13,7 @@ import { Navigation } from "swiper/modules";
 import "swiper/css"; // Import Swiper styles
 import "swiper/css/navigation"; // Import Swiper navigation styles
 import Image from "next/image";
-import {  Swiper as SwiperType } from 'swiper';
+import { Swiper as SwiperType } from "swiper";
 
 const projects = [
   {
@@ -169,7 +169,7 @@ export default function Page() {
           </h1>
           <h2 className="text-3xl font-bold">{project.title}</h2>
           <p className="text-white/30">{project.description}</p>
-          <ul className="flex gap-4">
+          <ul className="flex gap-4 flex-wrap">
             {project.stack.map((val, index) => (
               <li
                 key={index}

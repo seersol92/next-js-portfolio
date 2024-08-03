@@ -1,9 +1,10 @@
-import { motion } from 'framer-motion';
+import { motion } from "framer-motion";
 import { FiDownload } from "react-icons/fi";
 import Photo from "@/components/Photo";
 import { Button } from "@/components/ui/button";
-import Stats from '@/components/Stats';
-import MySocials from '@/components/MySocials';
+import Stats from "@/components/Stats";
+import MySocials from "@/components/MySocials";
+import Link from "next/link";
 
 export default function Home() {
   return (
@@ -27,14 +28,16 @@ export default function Home() {
 
           {/* Download Cv and social links */}
           <div className="flex flex-col xl:flex-row gap-6 items-center">
-            <Button
-              variant="outline"
-              size="lg"
-              className="flex uppercase justify-center   items-center gap-3"
-            >
-              <span>Download CV</span>
-              <FiDownload />
-            </Button>
+            <Link download href="/Hamad-CV.pdf" target="_blank">
+              <Button
+                variant="outline"
+                size="lg"
+                className="flex uppercase justify-center   items-center gap-3"
+              >
+                <span>Download CV</span>
+                <FiDownload />
+              </Button>
+            </Link>
 
             <div className="mb-8 xl:mb-0">
               <MySocials
@@ -51,9 +54,9 @@ export default function Home() {
         </div>
       </div>
 
-      <div className='mt-10'>
-          <Stats/>
-        </div>
+      <div className="mt-10">
+        <Stats />
+      </div>
     </section>
   );
 }

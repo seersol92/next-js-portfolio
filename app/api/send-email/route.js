@@ -1,4 +1,6 @@
 import nodemailer from "nodemailer";
+import fs from "fs";
+import path from "path";
 
 // Create a Nodemailer transporter using Mailtrap
 const transporter = nodemailer.createTransport({
@@ -10,6 +12,23 @@ const transporter = nodemailer.createTransport({
   },
 });
 
+// Function to replace placeholders in the HTML template with actual data
+const getEmailHtml = (data) => {
+  const filePath = path.resolve("templates", "email.html");
+  let template = fs.readFileSync(filePath, "utf8");
+
+  // Replace placeholders with actual data
+  template = template
+    .replace("{firstname}", data.firstname || "")
+    .replace("{lastname}", data.lastname || "")
+    .replace("{email}", data.email || "")
+    .replace("{phone}", data.phone || "")
+    .replace("{service}", data.service || "")
+    .replace("{message}", data.message || "");
+
+  return template;
+};
+
 export async function POST(req) {
   console.log({
     user: process.env.MAILTRAP_USER,
@@ -17,21 +36,13 @@ export async function POST(req) {
   });
   const data = await req.json();
   console.log(data);
-  const { firstname, lastname, email, phone, service, message } = data;
 
   const mailOptions = {
-    from: email,
-    to: "hamad@gmail.com", // Replace with the recipient's email
+    from: "hamad.seersol@gmail.com",
+    to: data.email,
+    cc: "hamad.seersol@gmail.com",
     subject: "Contact Form Submission",
-    html: `
-      <h1>Contact Form Submission</h1>
-      <p><strong>First Name:</strong> ${firstname}</p>
-      <p><strong>Last Name:</strong> ${lastname}</p>
-      <p><strong>Email:</strong> ${email}</p>
-      <p><strong>Phone:</strong> ${phone}</p>
-      <p><strong>Service:</strong> ${service}</p>
-      <p><strong>Message:</strong> ${message}</p>
-    `,
+    html: getEmailHtml(data),
   };
 
   try {
