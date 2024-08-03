@@ -11,6 +11,10 @@ const transporter = nodemailer.createTransport({
 });
 
 export async function POST(req) {
+  console.log({
+    user: process.env.MAILTRAP_USER,
+    pass: process.env.MAILTRAP_PASS,
+  });
   const data = await req.json();
   console.log(data);
   const { firstname, lastname, email, phone, service, message } = data;
