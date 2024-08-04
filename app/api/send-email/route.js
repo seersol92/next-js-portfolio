@@ -6,6 +6,7 @@ import path from "path";
 const transporter = nodemailer.createTransport({
   host: process.env.SMTP_HOST,
   port: process.env.SMTP_PORT,
+  secure: true,
   auth: {
     user: process.env.EMAIL_USER,
     pass: process.env.EMAIL_PASS,
@@ -31,14 +32,16 @@ const getEmailHtml = (data) => {
 
 export async function POST(req) {
   console.log({
-    user: process.env.MAILTRAP_USER,
-    pass: process.env.MAILTRAP_PASS,
+    host: process.env.SMTP_HOST,
+    port: process.env.SMTP_PORT,
+    user: process.env.EMAIL_USER,
   });
   const data = await req.json();
 
   const mailOptions = {
     from: process.env.EMAIL_USER,
     to: data.email,
+    cc: process.env.EMAIL_USER,
     subject: "Contact Form Submission",
     html: getEmailHtml(data),
   };
