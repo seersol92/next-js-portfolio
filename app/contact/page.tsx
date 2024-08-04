@@ -1,7 +1,7 @@
 "use client";
 
 import { useState } from "react";
-import { useForm } from "react-hook-form";
+import { Controller, useForm } from "react-hook-form";
 import * as Yup from "yup";
 import { yupResolver } from "@hookform/resolvers/yup";
 import { Button } from "@/components/ui/button";
@@ -15,9 +15,9 @@ import {
 } from "@/components/ui/select";
 import { Textarea } from "@/components/ui/textarea";
 import { toast } from "react-toastify";
+import { CiMail, CiPhone, CiUser } from "react-icons/ci";
+import { FaMapMarkerAlt } from "react-icons/fa";
 
-// Define the validation schema using Yup
-// Define the validation schema using Yup with min lengths
 const validationSchema = Yup.object().shape({
   firstname: Yup.string()
     .required("First Name is required")
@@ -27,11 +27,34 @@ const validationSchema = Yup.object().shape({
     .email("Invalid email format")
     .required("Email is required"),
   phone: Yup.string().min(10, "Phone number too short"), // Assuming a minimum length of 10 digits
-  service: Yup.string(),
+  service: Yup.string().required("Service is required"),
   message: Yup.string()
     .required("Message is required")
     .min(10, "Message must be at least 10 characters long"), // Minimum length for the message
 });
+
+const contactInfo = [
+  {
+    name: "Name",
+    icon: <CiUser />,
+    value: "Hamad Hassan",
+  },
+  {
+    name: "Phone",
+    icon: <CiPhone />,
+    value: "+92 306 705 1251",
+  },
+  {
+    name: "Email",
+    icon: <CiMail />,
+    value: "hamad.seersol@gmail.com",
+  },
+  {
+    name: "Address",
+    icon: <FaMapMarkerAlt />,
+    value: "Sargodha, Pakistan",
+  },
+];
 
 // Extract TypeScript type from Yup schema
 type contactForm = Yup.InferType<typeof validationSchema>;
@@ -41,6 +64,7 @@ export default function Page() {
 
   // Initialize the form with react-hook-form
   const {
+    control,
     register,
     handleSubmit,
     reset,
@@ -78,16 +102,16 @@ export default function Page() {
 
   return (
     <section className="container mx-auto">
-      <div className="flex flex-col lg:flex-row lg:gap-[25px] py-10">
-        <div className="lg:h-[54%] order-2 lg:order-none">
+      <div className="flex flex-col lg:flex-row lg:gap-[40px] py-10">
+        <div className="lg:w-[54%] order-2 lg:order-none">
           <form
             onSubmit={handleSubmit(onSubmit)}
             className="flex flex-col p-10 gap-6 bg-[#27272c] rounded-xl"
           >
             <h3 className="h3 text-accent">Let's work together</h3>
             <p className="text-white/50 max-w-[500px]">
-              Lorem ipsum dolor sit amet consectetur adipisicing elit. Esse,
-              consequatur!
+              When we combine our talents and ideas, we can achieve incredible
+              results and make a real impact.
             </p>
             <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
               <Input
@@ -115,31 +139,54 @@ export default function Page() {
                 error={errors.phone ? errors.phone.message : undefined}
               />
             </div>
-            <Select>
-              <SelectTrigger>
-                <SelectValue placeholder="Select a service" />
-              </SelectTrigger>
-              <SelectContent>
-                <SelectItem value="web-development">Web Development</SelectItem>
-                <SelectItem value="ui-ux">UI/UX Design</SelectItem>
-                <SelectItem value="rest-api">REST API Development</SelectItem>
-                <SelectItem value="mobile-app">
-                  Mobile App Development
-                </SelectItem>
-              </SelectContent>
-            </Select>
-            {errors.service && (
-              <p className="text-red-500">{errors.service.message}</p>
-            )}
+            <Controller
+              name="service"
+              control={control}
+              render={({ field }) => (
+                <div>
+                  <Select onValueChange={field.onChange}>
+                    <SelectTrigger
+                      className={` ${
+                        field.value?.length ? "" : "text-slate-500"
+                      } text-lg  focus:border-red-500  focus:ring-offset-0
+                        ${
+                          errors.service &&
+                          "border border-red-500 ring-offset-red-500 focus-visible:ring-red-500 "
+                        }`}
+                    >
+                      <SelectValue placeholder="Select a service" />
+                    </SelectTrigger>
+                    <SelectContent>
+                      <SelectItem value="web-development">
+                        Web Development
+                      </SelectItem>
+                      <SelectItem value="ui-ux">UI/UX Design</SelectItem>
+                      <SelectItem value="rest-api">
+                        REST API Development
+                      </SelectItem>
+                      <SelectItem value="mobile-app">
+                        Mobile App Development
+                      </SelectItem>
+                    </SelectContent>
+                  </Select>
+                  {errors.service && (
+                    <p className="text-red-500">{errors.service.message}</p>
+                  )}
+                </div>
+              )}
+            />
 
             <Textarea
               {...register("message")}
               rows={6}
               placeholder="Write your message.."
-              className={errors.message ? "border-red-500" : ""}
+              className={
+                errors.message &&
+                "border border-red-500 ring-offset-red-500 focus-visible:ring-red-500"
+              }
             />
             {errors.message && (
-              <p className="text-red-500">{errors.message.message}</p>
+              <p className="text-red-500 ">{errors.message.message}</p>
             )}
 
             <Button type="submit" disabled={isLoading} className="relative">
@@ -169,8 +216,30 @@ export default function Page() {
             </Button>
           </form>
         </div>
-        <div className="order-1 lg:order-none mb-10 lg:mb-0">
-          Contact us details
+        <div className="order-1 lg:order-none mb-10 lg:mb-0 flex lg:justify-end items-center">
+          <ul className="flex flex-col gap-10">
+            {contactInfo.map((info, index) => {
+              return (
+                <li
+                  key={index}
+                  className="flex gap-5 
+                items-center"
+                >
+                  <div
+                    className="text-4xl text-accent h-[52px] w-[52px] lg:h-[72px] lg:w-[72px]
+                  bg-[#27272c] rounded-md flex items-center justify-center
+                  "
+                  >
+                    {info.icon}
+                  </div>
+                  <div className="flex flex-col">
+                    <span className="text-white/60">{info.name}</span>
+                    <span className="text-xl">{info.value}</span>
+                  </div>
+                </li>
+              );
+            })}
+          </ul>
         </div>
       </div>
     </section>
