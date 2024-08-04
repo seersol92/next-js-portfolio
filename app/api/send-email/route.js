@@ -20,7 +20,7 @@ const getEmailHtml = (data) => {
 
   // Replace placeholders with actual data
   template = template
-    .replace("{firstname}", data.firstname || "")
+    .replace(/{firstname}/g, data.firstname || "")
     .replace("{lastname}", data.lastname || "")
     .replace("{email}", data.email || "")
     .replace("{phone}", data.phone || "")
@@ -31,13 +31,7 @@ const getEmailHtml = (data) => {
 };
 
 export async function POST(req) {
-  console.log({
-    host: process.env.SMTP_HOST,
-    port: process.env.SMTP_PORT,
-    user: process.env.EMAIL_USER,
-  });
   const data = await req.json();
-
   const mailOptions = {
     from: process.env.EMAIL_USER,
     to: data.email,
