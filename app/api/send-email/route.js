@@ -2,13 +2,13 @@ import nodemailer from "nodemailer";
 import fs from "fs";
 import path from "path";
 
-// Create a Nodemailer transporter using Mailtrap
+// Create a Nodemailer transporter
 const transporter = nodemailer.createTransport({
-  host: "smtp.mailtrap.io",
-  port: 587, // or 465 for SSL
+  host: process.env.SMTP_HOST,
+  port: process.env.SMTP_PORT,
   auth: {
-    user: process.env.MAILTRAP_USER,
-    pass: process.env.MAILTRAP_PASS,
+    user: process.env.EMAIL_USER,
+    pass: process.env.EMAIL_PASS,
   },
 });
 
@@ -35,12 +35,10 @@ export async function POST(req) {
     pass: process.env.MAILTRAP_PASS,
   });
   const data = await req.json();
-  console.log(data);
 
   const mailOptions = {
-    from: "hamad.seersol@gmail.com",
+    from: process.env.EMAIL_USER,
     to: data.email,
-    cc: "hamad.seersol@gmail.com",
     subject: "Contact Form Submission",
     html: getEmailHtml(data),
   };
